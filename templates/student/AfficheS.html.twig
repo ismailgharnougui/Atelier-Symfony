@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1> Liste des etudiants</h1>
+<form method="post" action="{{ path('recherche') }}">
+    <label>Recherche</label>
+    <input type="text" name="search"><input type="submit" value="Recherche">
+
+</form>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>NSC</th>
+        <th>Email</th>
+        <th>Classroom Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+
+    </tr>
+    <tr  {%  for s in student %} >
+        <td>{{s.id}} </td>
+        <td>{{s.nsc}} </td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.classroom.name }}</td>
+
+        <td><a href="{{ path('updateS',{'id':s.id}) }}">Update</a></td>
+        <td><a href="{{ path('app_DeleteStatiqueS',{'id':s.id}) }}">Delete</a></td>
+    </tr {%  endfor %}>
+</table>
+</body>
+</html>
